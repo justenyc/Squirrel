@@ -34,6 +34,7 @@ public class playermovement : MonoBehaviour
 
     [Header ("State Bools")]
     public Transform groundCheck;
+    public bool checkForGround = true;
     public float groundDistance = 0.25f;
     public LayerMask groundMask;
 
@@ -70,9 +71,11 @@ public class playermovement : MonoBehaviour
         wallJumpCD -= Time.deltaTime;
             Mathf.Clamp(wallJumpCD, 0, wallJumpCDTimer);
 
-        
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        animator.SetBool("isGrounded", isGrounded);
+        if (checkForGround == true)
+        {
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            animator.SetBool("isGrounded", isGrounded);
+        }
 
         if (isGrounded == true)
         {
@@ -219,8 +222,15 @@ public class playermovement : MonoBehaviour
         isGrounded = false;
         jumpBuffer = 0;
         groundBuffer = 0;
+        checkForGround = false;
+        StartCoroutine(DelayCheckForGround());
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-        groundDistance = 0f;
+    }
+
+    IEnumerator DelayCheckForGround()
+    {
+        yield return new WaitForSeconds(0.25f);
+        checkForGround = true;
     }
 
     public void DoubleJump()
@@ -233,6 +243,7 @@ public class playermovement : MonoBehaviour
 
     public void WallJump()
     {
+        animator.SetInteger("AnimState", 6);
         jumpBuffer = 0;
         wallJumpCD = wallJumpCDTimer;
         velocity.x = lastAngleHit.x * wallKickForce;
