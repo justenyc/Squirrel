@@ -11,7 +11,7 @@ public class Collectable : MonoBehaviour
         if (other.GetComponent<playermovement>())
         {
             Game_Manager.instance.CollectionListener(type);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }
