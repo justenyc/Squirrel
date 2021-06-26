@@ -39,7 +39,7 @@ public class TimeTrial : MonoBehaviour
             {
                 _numberToCollect = _objectsToSpawn.GetComponentsInChildren<Transform>().Length - 1;
                 _objectsToSpawn.SetActive(false);
-                InitializeTrialCollectableListener();
+                TrialCollectablesSubscriber(true);
             }
             else
             {
@@ -71,7 +71,7 @@ public class TimeTrial : MonoBehaviour
         }
     }
 
-    void InitializeTrialCollectableListener()
+    void TrialCollectablesSubscriber(bool subscribe)
     {
         if (_objects.Length > 0)
         {
@@ -80,7 +80,10 @@ public class TimeTrial : MonoBehaviour
                 Collectable newCollectable = T.GetComponent<Collectable>();
                 if (newCollectable != null)
                 {
-                    newCollectable.nutCollection += NutCollectionListener;
+                    if (subscribe == true)
+                        newCollectable.nutCollection += NutCollectionListener;
+                    else
+                        newCollectable.nutCollection -= NutCollectionListener;
                 }
             }
         }
@@ -128,5 +131,10 @@ public class TimeTrial : MonoBehaviour
     void TimeTrialVictory()
     {
         _victoryAcorn.SetActive(true);
+        _victoryAcorn.transform.parent = null;
+
+        TrialCollectablesSubscriber(false);
+        UIManager.instance.SetTimeTrialTextActive(false);
+        Destroy(this.gameObject);
     }
 }
