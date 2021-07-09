@@ -8,6 +8,7 @@ public class TimeTrial : MonoBehaviour
     [SerializeField] GameObject _clock;
     [SerializeField] GameObject _objectsToSpawn;
     [SerializeField] GameObject _victoryAcorn;
+    [SerializeField] GameObject _victoryAcornAppearanceEffect;
     Transform[] _objects;
 
     [Header("Trial")]
@@ -54,6 +55,11 @@ public class TimeTrial : MonoBehaviour
         else
         {
             _victoryAcorn.SetActive(false);
+        }
+
+        if (_victoryAcornAppearanceEffect == null)
+        {
+            Debug.LogError("Victory Acorn Appearance effect is not assigned in the inspector");
         }
     }
 
@@ -131,6 +137,7 @@ public class TimeTrial : MonoBehaviour
     void TimeTrialVictory()
     {
         _victoryAcorn.SetActive(true);
+        Instantiate(_victoryAcornAppearanceEffect, _victoryAcorn.transform.position, _victoryAcornAppearanceEffect.transform.rotation);
         _victoryAcorn.transform.parent = null;
 
         TrialCollectablesSubscriber(false);
