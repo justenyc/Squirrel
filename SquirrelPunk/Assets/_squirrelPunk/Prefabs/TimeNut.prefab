@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8780482031979592650}
   - component: {fileID: 8780482031979592694}
   m_Layer: 0
-  m_Name: Nut
+  m_Name: TimeNut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b4c1fd27ada06e4f88692803e8cf51e, type: 2}
+  - {fileID: 2100000, guid: 3fef5c13c2fb82c41aae25b3be0b47ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,8 +109,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  _spin: 1
-  _bob: 1
-  _bobTime: 0.25
-  _bobSpeed: 0.01
-  _rotationSpeed: 100
