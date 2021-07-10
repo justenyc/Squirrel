@@ -8,6 +8,7 @@ public class TimeTrial : MonoBehaviour
     [SerializeField] GameObject _clock;
     [SerializeField] GameObject _objectsToSpawn;
     [SerializeField] GameObject _victoryAcorn;
+    [SerializeField] GameObject _victoryAcornAppearanceEffect;
     Transform[] _objects;
 
     [Header("Trial")]
@@ -39,7 +40,7 @@ public class TimeTrial : MonoBehaviour
             {
                 _numberToCollect = _objectsToSpawn.GetComponentsInChildren<Transform>().Length - 1;
                 _objectsToSpawn.SetActive(false);
-                InitializeTrialCollectableListener();
+                TrialCollectablesSubscriber(true);
             }
             else
             {
@@ -54,6 +55,11 @@ public class TimeTrial : MonoBehaviour
         else
         {
             _victoryAcorn.SetActive(false);
+        }
+
+        if (_victoryAcornAppearanceEffect == null)
+        {
+            Debug.LogError("Victory Acorn Appearance effect is not assigned in the inspector");
         }
     }
 
@@ -71,7 +77,7 @@ public class TimeTrial : MonoBehaviour
         }
     }
 
-    void InitializeTrialCollectableListener()
+    void TrialCollectablesSubscriber(bool subscribe)
     {
         if (_objects.Length > 0)
         {
@@ -80,7 +86,10 @@ public class TimeTrial : MonoBehaviour
                 Collectable newCollectable = T.GetComponent<Collectable>();
                 if (newCollectable != null)
                 {
-                    newCollectable.nutCollection += NutCollectionListener;
+                    if (subscribe == true)
+                        newCollectable.nutCollection += NutCollectionListener;
+                    else
+                        newCollectable.nutCollection -= NutCollectionListener;
                 }
             }
         }
@@ -128,5 +137,11 @@ public class TimeTrial : MonoBehaviour
     void TimeTrialVictory()
     {
         _victoryAcorn.SetActive(true);
+        Instantiate(_victoryAcornAppearanceEffect, _victoryAcorn.transform.position, _victoryAcornAppearanceEffect.transform.rotation);
+        _victoryAcorn.transform.parent = null;
+
+        TrialCollectablesSubscriber(false);
+        UIManager.instance.SetTimeTrialTextActive(false);
+        Destroy(this.gameObject);
     }
 }

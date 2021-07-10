@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2242383290008405790
 Transform:
   m_ObjectHideFlags: 0
@@ -186,6 +186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clock: {fileID: 2242383290535120548}
   _objectsToSpawn: {fileID: 2242383290008405785}
+  _victoryAcorn: {fileID: 0}
+  _victoryAcornAppearanceEffect: {fileID: 7011933837714673824, guid: 60191b6acc95f5640802f65f02c8142f, type: 3}
   _startCountdown: 0
   _allotedTime: 60
   _countdown: 0
+  _numberToCollect: 0
+  _numberCollected: 0
