@@ -33,6 +33,9 @@ public class Game_Manager : MonoBehaviour
                 _goldAcorns++;
                 break;
 
+            case Type.Time:
+                break;
+
             default:
                 Debug.LogError("Incorrect Type");
                 break;
