@@ -14,7 +14,9 @@ public class Game_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _checkpoints = FindObjectsOfType<Checkpoint>();
+        if (_checkpoints.Length == 0)
+            _checkpoints = FindObjectsOfType<Checkpoint>();
+        
         if (instance == null)
         {
             instance = this;
@@ -48,12 +50,10 @@ public class Game_Manager : MonoBehaviour
 
     Checkpoint GetActiveCheckpoint()
     {
-        Debug.Log("GetActiveCheckpoint called");
         foreach (Checkpoint cp in _checkpoints)
         {
             if (cp._active == true)
             {
-                Debug.Log(cp);
                 return cp;
             }
         }
@@ -62,10 +62,14 @@ public class Game_Manager : MonoBehaviour
 
     public void Respawn(playermovement player)
     {
-        Debug.Log("Respawn() called");
         Checkpoint activeCheckpoint = GetActiveCheckpoint();
 
-        Debug.Log(activeCheckpoint.gameObject.transform.position);
+        if (activeCheckpoint == null)
+        {
+            _checkpoints[0].SetActiveCheckpoint(true);
+            activeCheckpoint = _checkpoints[0];
+        }
+
         player.gameObject.transform.position = activeCheckpoint.gameObject.transform.position + Vector3.forward;
     }
 
@@ -73,7 +77,7 @@ public class Game_Manager : MonoBehaviour
     {
         foreach(Checkpoint cp in _checkpoints)
         {
-            cp._active = false;
+            cp.SetActiveCheckpoint(false);
         }
 
         newActiveCheckpoint.SetActiveCheckpoint(true);

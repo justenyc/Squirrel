@@ -54,7 +54,7 @@ public class CurrencyDoor : MonoBehaviour
         }
         else
         {
-            for (float i = 1; i > 0; i += Time.deltaTime * dissolveSpeed)
+            for (float i = 0; i < 1; i += Time.deltaTime * dissolveSpeed)
             {
                 mats[0].material.SetFloat("Dissolve", mats[0].material.GetFloat("Dissolve") + Time.deltaTime * dissolveSpeed);
                 mats[1].material.SetFloat("Dissolve", mats[1].material.GetFloat("Dissolve") + Time.deltaTime * dissolveSpeed);
