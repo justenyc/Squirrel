@@ -256,43 +256,6 @@ public class playermovement : MonoBehaviour
         gravity = -33;
     }
 
-    /*private void OnCollisionStay(Collision collision)
-    {
-
-        ContactPoint collisionPoint = collision.GetContact(0);
-
-        Vector3 raycastDir = collisionPoint.point - transform.position;
-        
-
-       //Debug.Log(transform.rotation.eulerAngles + " this is ROTATION");
-
-        RaycastHit hit;
-        
-
-        if (Physics.Raycast(transform.position, raycastDir, out hit, 5f) && wallRunToggle == true && isGrounded == false && canWallRun == true)
-        {
-            
-            Vector3 temp = (new Vector3(transform.position.x + hit.normal.z, transform.position.y, transform.position.z + hit.normal.x) - transform.position).normalized;
-            //Debug.Log(temp);
-            //Debug.Log(new Vector3(temp.x * WallRunCheck(), temp.y, temp.z * WallRunCheck()) + " this is some wack shit!");
-            
-            gravity = 0;
-            velocity = Vector3.zero;
-            wallRunning = true;
-            lastAngleHit = hit.normal;
-        }
-    }*/
-
-    /*private void OnCollisionExit(Collision collision)
-    {
-        canWallRun = true;
-        if (wallRunning == true)
-        {
-            wallRunning = false;
-            ResetGravity();
-        }
-    }*/
-
     void SetAnimator(int index)
     {
         animator.SetInteger("AnimState", index);
@@ -327,5 +290,20 @@ public class playermovement : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void Die()
+    {
+        //TODO play animation, vfx and sfx
+        if (Game_Manager.instance != null)
+            Game_Manager.instance.Respawn(this);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "deathZone")
+        {
+            Die();
+        }
     }
 }
