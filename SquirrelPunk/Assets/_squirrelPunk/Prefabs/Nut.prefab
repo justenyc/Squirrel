@@ -109,8 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  _spin: 1
+  _collectionEffect: {fileID: 7011933837714673824, guid: 5205b6046b5a83547896b247c2fd68ef, type: 3}
   _bob: 1
-  _bobTime: 0.25
   _bobSpeed: 0.01
+  _bobTime: 0.25
+  _spin: 1
   _rotationSpeed: 100

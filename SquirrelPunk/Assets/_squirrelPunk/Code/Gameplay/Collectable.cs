@@ -71,7 +71,13 @@ public class Collectable : MonoBehaviour
                 nutCollection();
                 Instantiate(_collectionEffect, this.transform.position, _collectionEffect.transform.rotation);
             }
+            else
+            {
+                Instantiate(_collectionEffect, this.transform.position, _collectionEffect.transform.rotation);
+            }
             this.gameObject.SetActive(false);
+
+           
         }
     }
 }

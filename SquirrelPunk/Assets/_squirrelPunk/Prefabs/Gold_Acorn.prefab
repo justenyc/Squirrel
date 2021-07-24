@@ -4823,7 +4823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6780400769758393996
 Transform:
   m_ObjectHideFlags: 0
@@ -4914,6 +4914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  _collectionEffect: {fileID: 5901644412891335238, guid: 7d19d3ea20359f2469fc56ff97905a2a, type: 3}
   _bob: 1
   _bobSpeed: 0.01
   _bobTime: 0.25
