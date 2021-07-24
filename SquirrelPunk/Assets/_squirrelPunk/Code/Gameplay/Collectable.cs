@@ -85,5 +85,6 @@ public class Collectable : MonoBehaviour
 public enum Type
 {
     Normal,
-    Gold
+    Gold,
+    Time
 };

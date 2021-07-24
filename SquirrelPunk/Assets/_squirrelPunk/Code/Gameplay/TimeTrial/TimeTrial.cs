@@ -70,7 +70,7 @@ public class TimeTrial : MonoBehaviour
             _countdown -= Time.deltaTime;
             UIManager.instance.UpdateTimeTrialText(_countdown);
         }
-        else
+        else if (_startCountdown == true && _countdown <= 0)
         {
             _startCountdown = false;
             Reset();
