@@ -16,6 +16,9 @@
         },
         {
             "m_Id": "1c342e64a22b4c849d5770eb2cd63bde"
+        },
+        {
+            "m_Id": "4b2f3322655c412da0aeeff2fb86bf27"
         }
     ],
     "m_GroupDatas": [],
@@ -46,6 +49,9 @@
         "m_Blocks": [
             {
                 "m_Id": "1c342e64a22b4c849d5770eb2cd63bde"
+            },
+            {
+                "m_Id": "4b2f3322655c412da0aeeff2fb86bf27"
             }
         ]
     },
@@ -127,6 +133,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "2784b5c9aac145aa9429d187a509fc58",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Alpha",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 1.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "29d062eb90384f92b119f93cada71a5c",
     "m_Group": {
@@ -184,12 +205,45 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "4b2f3322655c412da0aeeff2fb86bf27",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.Alpha",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "2784b5c9aac145aa9429d187a509fc58"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.Alpha"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "65549654a64845aea0d23f6704cd4be4",
     "m_ActiveSubTarget": {
         "m_Id": "7314bb1b52804500a307e3fa5de7c6c6"
     },
-    "m_SurfaceType": 0,
+    "m_SurfaceType": 1,
     "m_AlphaMode": 0,
     "m_TwoSided": false,
     "m_AlphaClip": false,
