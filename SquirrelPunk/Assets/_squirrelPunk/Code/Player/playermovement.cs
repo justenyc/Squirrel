@@ -294,13 +294,18 @@ public class playermovement : MonoBehaviour
 
     public void Die()
     {
+        CharacterController cc = this.GetComponent<CharacterController>();
+        cc.enabled = false;
+        Debug.Log("Die() called");
         //TODO play animation, vfx and sfx
         if (Game_Manager.instance != null)
             Game_Manager.instance.Respawn(this);
+        cc.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter called");
         if (other.tag == "deathZone")
         {
             Die();

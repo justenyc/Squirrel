@@ -48,10 +48,12 @@ public class Game_Manager : MonoBehaviour
 
     Checkpoint GetActiveCheckpoint()
     {
+        Debug.Log("GetActiveCheckpoint called");
         foreach (Checkpoint cp in _checkpoints)
         {
             if (cp._active == true)
             {
+                Debug.Log(cp);
                 return cp;
             }
         }
@@ -60,8 +62,10 @@ public class Game_Manager : MonoBehaviour
 
     public void Respawn(playermovement player)
     {
+        Debug.Log("Respawn() called");
         Checkpoint activeCheckpoint = GetActiveCheckpoint();
 
+        Debug.Log(activeCheckpoint.gameObject.transform.position);
         player.gameObject.transform.position = activeCheckpoint.gameObject.transform.position + Vector3.forward;
     }
 
