@@ -76,8 +76,6 @@ public class Collectable : MonoBehaviour
                 Instantiate(_collectionEffect, this.transform.position, _collectionEffect.transform.rotation);
             }
             this.gameObject.SetActive(false);
-
-           
         }
     }
 }

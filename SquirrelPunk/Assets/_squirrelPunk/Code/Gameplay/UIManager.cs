@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField] Image _timeTrialText;
+    [SerializeField] TextMeshProUGUI[] tmpArray;
+    Dictionary<string, TextMeshProUGUI> d = new Dictionary<string, TextMeshProUGUI>();
+
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -15,16 +19,20 @@ public class UIManager : MonoBehaviour
             instance = this;
         else
             Destroy(this.gameObject);
+
+        foreach (TextMeshProUGUI tmp in tmpArray)
+        {
+            d.Add(tmp.name, tmp);
+        }
     }
 
     public void SetTimeTrialTextActive(bool b)
     {
-        _timeTrialText.gameObject.SetActive(b);
+        d["Time_Trial_Text"].gameObject.transform.parent.gameObject.SetActive(b);
     }
 
-    public void UpdateTimeTrialText(float value)
+    public void UpdateText(string textName, float value)
     {
-        Text myText = _timeTrialText.GetComponentInChildren<Text>();
-        myText.text = Mathf.Ceil(value).ToString();
+        d[textName].text = value.ToString();
     }
 }

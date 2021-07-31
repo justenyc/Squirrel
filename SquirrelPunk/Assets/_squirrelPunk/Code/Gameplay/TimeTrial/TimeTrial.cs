@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TimeTrial : MonoBehaviour
 {
+    //Starting from Clock script. Also sets listener
+    //references UIManager script 
+
     [Header("Setup Objects")]
     [SerializeField] GameObject _clock;
     [SerializeField] GameObject _objectsToSpawn;
@@ -23,6 +26,9 @@ public class TimeTrial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playermovement p = FindObjectOfType<playermovement>();
+        p.died += PlayerDeathListener;
+
         if (_clock == null)
         {
             Debug.LogError("Clock is not assigned in inspector");
@@ -68,7 +74,7 @@ public class TimeTrial : MonoBehaviour
         if (_startCountdown == true && _countdown > 0)
         {
             _countdown -= Time.deltaTime;
-            UIManager.instance.UpdateTimeTrialText(_countdown);
+            UIManager.instance.UpdateText("Time_Trial_Text", Mathf.Ceil(_countdown));
         }
         else if (_startCountdown == true && _countdown <= 0)
         {
@@ -113,6 +119,7 @@ public class TimeTrial : MonoBehaviour
         _objectsToSpawn.SetActive(false);
         _numberCollected = 0;
         UIManager.instance.SetTimeTrialTextActive(false);
+
     }
 
     void SpawnObjects(bool b)
@@ -143,5 +150,10 @@ public class TimeTrial : MonoBehaviour
         TrialCollectablesSubscriber(false);
         UIManager.instance.SetTimeTrialTextActive(false);
         Destroy(this.gameObject);
+    }
+
+    void PlayerDeathListener()
+    {
+        Reset();
     }
 }

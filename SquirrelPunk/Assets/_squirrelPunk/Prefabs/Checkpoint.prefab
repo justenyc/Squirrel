@@ -91,7 +91,7 @@ SphereCollider:
   m_GameObject: {fileID: 1360510370}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -122,8 +122,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2946812114593605006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 24.5, z: 0}
-  m_LocalScale: {x: 2, y: 50, z: 2}
+  m_LocalPosition: {x: 0, y: 500, z: 0}
+  m_LocalScale: {x: 10, y: 1000, z: 10}
   m_Children:
   - {fileID: 1360510371}
   m_Father: {fileID: 3865594779357443403}
@@ -187,7 +187,7 @@ SphereCollider:
   m_GameObject: {fileID: 2946812114593605006}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -301,7 +301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _active: 0
-  appearanceSpeed: 5
-  appear: 1
+  appearanceSpeed: 1
   beam: {fileID: 2946812114593605006}
   mats: []

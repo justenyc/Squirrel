@@ -51,6 +51,9 @@ public class playermovement : MonoBehaviour
 
     PlayerInput playerInput;
 
+    public delegate void dying();
+    public event dying died;
+
     // Update is called once per frame
 
     private void Start()
@@ -300,6 +303,9 @@ public class playermovement : MonoBehaviour
         if (Game_Manager.instance != null)
             Game_Manager.instance.Respawn(this);
         cc.enabled = true;
+
+        if (died != null)
+            died();
     }
 
     private void OnTriggerEnter(Collider other)

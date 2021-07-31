@@ -13,7 +13,7 @@ public class Checkpoint : MonoBehaviour
     private void Start()
     {
         mats = GetComponentsInChildren<MeshRenderer>();
-        //StartCoroutine(AnimateAppearance());
+        StartCoroutine(AnimateAppearance(_active));
     }
 
     // Start is called before the first frame update
@@ -26,14 +26,13 @@ public class Checkpoint : MonoBehaviour
                 Game_Manager.instance.SetActiveCheckpoint(this);
             }
         }
-        StartCoroutine(AnimateAppearance(_active));
     }
 
     IEnumerator AnimateAppearance(bool active)
     {
         if (active)
         {
-            for (float i = 0; i < 1; i += Time.deltaTime * appearanceSpeed)
+            for (float i = mats[1].material.GetFloat("Appearance"); i < 1; i += Time.deltaTime * appearanceSpeed)
             {
                 mats[1].material.SetFloat("Appearance", mats[1].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed);
                 mats[2].material.SetFloat("Appearance", mats[2].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed);
@@ -42,10 +41,10 @@ public class Checkpoint : MonoBehaviour
         }
         else
         {
-            for (float i = 1; i > 0; i -= Time.deltaTime * appearanceSpeed)
+            for (float i = mats[1].material.GetFloat("Appearance"); i > 0; i -= Time.deltaTime * appearanceSpeed)
             {
-                mats[1].material.SetFloat("Appearance", mats[1].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed);
-                mats[2].material.SetFloat("Appearance", mats[2].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed);
+                mats[1].material.SetFloat("Appearance", mats[1].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10);
+                mats[2].material.SetFloat("Appearance", mats[2].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10);
                 yield return new WaitForSeconds(Time.deltaTime);
             }
         }
@@ -54,5 +53,6 @@ public class Checkpoint : MonoBehaviour
     public void SetActiveCheckpoint(bool isActive)
     {
         _active = isActive;
+        StartCoroutine(AnimateAppearance(_active));
     }
 }
