@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.15
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: cede08c9fc471e64884909cd4bbeaf59, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 28334167cdc0f6744bf01deb055fe492, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -586,8 +586,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112522669}
-  m_LocalRotation: {x: -0, y: 0.95194626, z: -0.30626512, w: 0}
-  m_LocalPosition: {x: 1219.7478, y: 45.440136, z: 4.882742}
+  m_LocalRotation: {x: 0.08013051, y: 0.6785917, z: -0.07486875, w: 0.726283}
+  m_LocalPosition: {x: 630.563, y: -20.189035, z: -168.4695}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1695623856}
@@ -4958,7 +4958,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -180
+    Value: 86.11145
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -6009,8 +6009,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734756641}
-  m_LocalRotation: {x: -0.000000007872615, y: 0.946218, z: -0.32352984, w: -0.000000023024796}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.09332794, y: 0.67711765, z: -0.087199576, w: 0.7247054}
+  m_LocalPosition: {x: 0, y: 0.0000019073486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1187950709}
@@ -6207,7 +6207,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837952339}
-  m_LocalRotation: {x: -1e-45, y: 0.9519463, z: -0.3062651, w: -3e-45}
+  m_LocalRotation: {x: 0.08013051, y: 0.6785917, z: -0.074868746, w: 0.726283}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18821,7 +18821,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -180
+    Value: 86.11145
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -19071,7 +19071,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -180
+    Value: 86.11145
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -19831,7 +19831,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347227122}
-  m_LocalRotation: {x: -7.5071e-16, y: 0.9573457, z: -0.28894502, w: 1.0535989e-15}
+  m_LocalRotation: {x: 0.06694149, y: 0.6798383, z: -0.06254579, w: 0.7276172}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -25164,31 +25164,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1219.7478
+      value: 651.51465
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39.94
+      value: -25.689035
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.22
+      value: -167.04536
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7270368
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.07191233
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.67940205
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.06825771
       objectReference: {fileID: 0}
     - target: {fileID: 8447740222005356701, guid: f616f9079264e7e4b963fed6e5b18692, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -29749,7 +29749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900577342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1219.7478, y: 45.44, z: 18.78}
+  m_LocalPosition: {x: 630.563, y: -20.189035, z: -168.4695}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 734756642}
@@ -29818,7 +29818,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -180
+    Value: 86.11145
     m_SpeedMode: 0
     m_MaxSpeed: 400
     m_AccelTime: 0.4

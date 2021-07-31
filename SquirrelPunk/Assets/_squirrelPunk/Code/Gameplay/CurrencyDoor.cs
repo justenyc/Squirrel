@@ -27,10 +27,10 @@ public class CurrencyDoor : MonoBehaviour
         switch(currencyType)
         {
             case Currency.Gold:
-                return (Game_Manager.instance._goldAcorns == requiredAmount);
+                return (Game_Manager.instance._goldAcorns >= requiredAmount);
 
             case Currency.Normal:
-                return (Game_Manager.instance._normalAcorns == requiredAmount);
+                return (Game_Manager.instance._normalAcorns >= requiredAmount);
 
             default:
                 return false;

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: cede08c9fc471e64884909cd4bbeaf59, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 28334167cdc0f6744bf01deb055fe492, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.2104224, g: 0.88397896, b: 0.5952675, a: 1}
+  m_IndirectSpecularColor: {r: 0.58337986, g: 0.6360347, b: 0.6427194, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11856,6 +11856,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1360510372, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3865594779357443399, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
       propertyPath: m_Name
       value: Checkpoint
@@ -11907,6 +11911,18 @@ PrefabInstance:
     - target: {fileID: 3865594779357443404, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
       propertyPath: _active
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865594779357443404, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
+      propertyPath: appearanceSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865594779438120062, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696312445913323984, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
