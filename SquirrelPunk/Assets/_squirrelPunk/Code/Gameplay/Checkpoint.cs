@@ -5,15 +5,15 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public bool _active = false;
+    public float appearanceSpeed = 1;
     public GameObject beam;
 
-    Material myMat;
+    public MeshRenderer[] mats;
 
     private void Start()
     {
-        myMat = this.GetComponent<MeshRenderer>().material;
-        myMat.EnableKeyword("_EmissionColor");
-        SetEmissionColor(_active);
+        mats = GetComponentsInChildren<MeshRenderer>();
+        StartCoroutine(AnimateAppearance(_active));
     }
 
     // Start is called before the first frame update
@@ -28,23 +28,31 @@ public class Checkpoint : MonoBehaviour
         }
     }
 
-    public void SetActiveCheckpoint(bool isActive)
+    IEnumerator AnimateAppearance(bool active)
     {
-        _active = isActive;
-        SetEmissionColor(_active);
-    }
-
-    void SetEmissionColor(bool isActive)
-    {
-        if (isActive == false)
+        if (active)
         {
-            beam.SetActive(false);//Temporary because EmissionColor seems broken in unity during editor runtime
-            //myMat.SetColor("_EmissionColor", Color.black);
+            for (float i = mats[1].material.GetFloat("Appearance"); i < 1; i += Time.deltaTime * appearanceSpeed)
+            {
+                mats[1].material.SetFloat("Appearance", mats[1].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed);
+                mats[2].material.SetFloat("Appearance", mats[2].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed);
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
         }
         else
         {
-            beam.SetActive(true);
-            //myMat.SetColor("_EmissionColor", new Color(0,0,2,1));
+            for (float i = mats[1].material.GetFloat("Appearance"); i > 0; i -= Time.deltaTime * appearanceSpeed)
+            {
+                mats[1].material.SetFloat("Appearance", mats[1].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10);
+                mats[2].material.SetFloat("Appearance", mats[2].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10);
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
         }
+    }
+
+    public void SetActiveCheckpoint(bool isActive)
+    {
+        _active = isActive;
+        StartCoroutine(AnimateAppearance(_active));
     }
 }

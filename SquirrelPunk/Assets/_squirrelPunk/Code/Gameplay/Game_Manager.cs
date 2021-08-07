@@ -33,10 +33,12 @@ public class Game_Manager : MonoBehaviour
         {
             case Type.Normal:
                 _normalAcorns++;
+                UIManager.instance.UpdateText("Nut_Display_Text", _normalAcorns);
                 break;
 
             case Type.Gold:
                 _goldAcorns++;
+                UIManager.instance.UpdateText("Gold_Nut_Display_Text", _goldAcorns);
                 break;
 
             case Type.Time:
