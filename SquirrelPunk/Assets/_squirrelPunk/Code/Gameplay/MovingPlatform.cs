@@ -6,10 +6,12 @@ public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] Platform_Type type;
     [SerializeField] float moveSpeed;
+    [SerializeField] float delayTime;
     [SerializeField] List<Transform> waypoints;
 
-    bool forward;
-    int iterator = 0;
+    [SerializeField] bool forward = true;
+    [SerializeField] bool delayBuffer = false;
+    [SerializeField] int iterator = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -39,16 +41,15 @@ public class MovingPlatform : MonoBehaviour
     {
         try
         {
-            if (Vector3.Distance(transform.position, waypoints[iterator].position) < 0.1f)
+            if (Vector3.Distance(transform.position, waypoints[iterator].position) < 0.1f && delayBuffer == false)
             {
-                if (forward)
-                {
-                    iterator++;
-                }
-                else
-                {
-                    iterator--;
-                }
+                delayBuffer = true;
+                StartCoroutine(DelayPlatform(delayTime, forward));
+            }
+            if (this.GetComponentInChildren<CharacterController>())
+            {
+                CharacterController temp = this.GetComponentInChildren<CharacterController>();
+                temp.Move(Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed));
             }
             transform.position = Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed);
         }
@@ -56,30 +57,54 @@ public class MovingPlatform : MonoBehaviour
         {
             forward = !forward;
 
-            if (forward)
-            {
-                iterator++;
-            }
-            else
-            {
-                iterator--;
-            }
+            StartCoroutine(DelayPlatform(delayTime, forward));
         }
+    }
+
+
+    IEnumerator DelayPlatform(float delay, bool direction)
+    {
+        yield return new WaitForSeconds(delay);
+        if (direction)
+        {
+            iterator++;
+        }
+        else
+        {
+            iterator--;
+        }
+        yield return new WaitForSeconds(0.25f);
+        delayBuffer = false;
+    }
+
+    IEnumerator DelayPlatform(float delay, bool direction, int iteratorForce)
+    {
+        yield return new WaitForSeconds(delay);
+        iterator = iteratorForce;
+        yield return new WaitForSeconds(0.25f);
+        delayBuffer = false;
     }
 
     void Loop()
     {
         try
         {
-            if (Vector3.Distance(transform.position, waypoints[iterator].position) < 0.1f)
+            if (Vector3.Distance(transform.position, waypoints[iterator].position) < 0.1f && delayBuffer == false)
             {
-                iterator++;
+                delayBuffer = true;
+                StartCoroutine(DelayPlatform(delayTime, forward));
+            }
+            if (this.GetComponentInChildren<CharacterController>())
+            {
+                CharacterController temp = this.GetComponentInChildren<CharacterController>();
+                //temp.Move(Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed));
             }
             transform.position = Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed);
         }
         catch
         {
-            iterator = 0;
+            delayBuffer = true;
+            StartCoroutine(DelayPlatform(delayTime, forward, 0));
         }
     }
 
