@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 597886654471192055}
   - component: {fileID: 597886654471192053}
   - component: {fileID: 597886654471192054}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 597886655367781327}
   - component: {fileID: 597886655367781326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Nut_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 5570019037739345346}
   - component: {fileID: 5570019037740115426}
   - component: {fileID: 5570019037741115170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 5570019037739345348}
   - component: {fileID: 5570019037740115428}
   - component: {fileID: 5570019037741115172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 5570019037739345350}
   - component: {fileID: 5570019037740115430}
   - component: {fileID: 5570019037741115174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 189522630}
   - component: {fileID: 189522631}
   - component: {fileID: 189522629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door_Currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
