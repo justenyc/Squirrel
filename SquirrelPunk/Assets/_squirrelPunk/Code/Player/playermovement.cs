@@ -77,6 +77,15 @@ public class playermovement : MonoBehaviour
         if (checkForGround == true)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            try
+            {
+                Transform newGround = Physics.OverlapSphere(groundCheck.position, 0.5f, groundMask)[0].transform;
+                transform.parent = newGround;
+            }
+            catch
+            {
+
+            }
             animator.SetBool("isGrounded", isGrounded);
         }
 
@@ -221,6 +230,7 @@ public class playermovement : MonoBehaviour
 
     public void Jump()
     {
+        transform.parent = null;
         SetAnimator(6);
         isGrounded = false;
         jumpBuffer = 0;
