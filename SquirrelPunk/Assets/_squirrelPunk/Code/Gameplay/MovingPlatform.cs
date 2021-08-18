@@ -31,7 +31,7 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (waypoints.Count > 1)
             Movement();
@@ -39,6 +39,8 @@ public class MovingPlatform : MonoBehaviour
 
     void BackAndForth()
     {
+        Vector3 movementVector = Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed) - transform.position;
+
         if (Vector3.Distance(transform.position, waypoints[iterator].position) < 0.1f && move == true)
         {
             move = false;
@@ -68,12 +70,9 @@ public class MovingPlatform : MonoBehaviour
 
 
         if (move == true)
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed);
-
-        if (this.GetComponentInChildren<CharacterController>())
         {
-            CharacterController temp = this.GetComponentInChildren<CharacterController>();
-            temp.Move(Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed));
+            transform.position += movementVector;
+            MovePlayer(movementVector);
         }
     }
 
@@ -88,27 +87,28 @@ public class MovingPlatform : MonoBehaviour
     {
         try
         {
+            Vector3 movementVector = Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed) - transform.position;
+
             if (Vector3.Distance(transform.position, waypoints[iterator].position) < 0.1f && move == true)
             {
                 move = false;
                 iterator++;
                 StartCoroutine(DelayPlatform(delayTime, forward));
             }
-            
-            if (move == true)
-                transform.position = Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed);
 
-            if (this.GetComponentInChildren<CharacterController>())
+            if (move == true)
             {
-                CharacterController temp = this.GetComponentInChildren<CharacterController>();
-                //temp.Move(Vector3.MoveTowards(transform.position, waypoints[iterator].position, Time.deltaTime * moveSpeed));
+                transform.position += movementVector;
+                MovePlayer(movementVector);
             }
+
         }
         catch
         {
             iterator = 0;
             StartCoroutine(DelayPlatform(delayTime, forward));
         }
+
     }
 
     void Movement()
@@ -122,6 +122,16 @@ public class MovingPlatform : MonoBehaviour
             case Platform_Type.Loop:
                 Loop();
                 break;
+        }
+    }
+
+    //Player childs itself to any object tagged as 'Grounded'
+    void MovePlayer(Vector3 movementVector)
+    {
+        if (this.GetComponentInChildren<CharacterController>())
+        {
+            CharacterController temp = this.GetComponentInChildren<CharacterController>();
+            temp.Move(movementVector);
         }
     }
 }
