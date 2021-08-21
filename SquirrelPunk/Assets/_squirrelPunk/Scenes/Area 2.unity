@@ -4311,11 +4311,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063b8438740281c40825d549d541d225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   moveSpeed: 20
+  delayTime: 1
   waypoints:
   - {fileID: 116712397}
   - {fileID: 1791483096}
+  forward: 1
+  delayBuffer: 0
+  iterator: 0
 --- !u!64 &173685974
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33374,11 +33378,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063b8438740281c40825d549d541d225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   moveSpeed: 20
+  delayTime: 1
   waypoints:
   - {fileID: 1238407133}
-  - {fileID: 0}
+  - {fileID: 721377764}
+  forward: 1
+  delayBuffer: 0
+  iterator: 0
 --- !u!64 &1608232240
 MeshCollider:
   m_ObjectHideFlags: 0
