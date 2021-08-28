@@ -34,8 +34,8 @@ public class Checkpoint : MonoBehaviour
         {
             for (float i = mats[1].material.GetFloat("Appearance"); i < 1; i += Time.deltaTime * appearanceSpeed)
             {
-                mats[1].material.SetFloat("Appearance", mats[1].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed);
-                mats[2].material.SetFloat("Appearance", mats[2].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed);
+                mats[1].material.SetFloat("Appearance", Mathf.Clamp01(mats[1].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed * 10));
+                mats[2].material.SetFloat("Appearance", Mathf.Clamp01(mats[2].material.GetFloat("Appearance") + Time.deltaTime * appearanceSpeed * 10));
                 yield return new WaitForSeconds(Time.deltaTime);
             }
         }
@@ -43,8 +43,8 @@ public class Checkpoint : MonoBehaviour
         {
             for (float i = mats[1].material.GetFloat("Appearance"); i > 0; i -= Time.deltaTime * appearanceSpeed)
             {
-                mats[1].material.SetFloat("Appearance", mats[1].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10);
-                mats[2].material.SetFloat("Appearance", mats[2].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10);
+                mats[1].material.SetFloat("Appearance", Mathf.Clamp01(mats[1].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10));
+                mats[2].material.SetFloat("Appearance", Mathf.Clamp01(mats[2].material.GetFloat("Appearance") - Time.deltaTime * appearanceSpeed * 10));
                 yield return new WaitForSeconds(Time.deltaTime);
             }
         }

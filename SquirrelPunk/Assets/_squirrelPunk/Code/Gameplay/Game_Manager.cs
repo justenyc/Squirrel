@@ -79,6 +79,7 @@ public class Game_Manager : MonoBehaviour
     {
         foreach(Checkpoint cp in _checkpoints)
         {
+            Debug.Log(cp.name);
             cp.SetActiveCheckpoint(false);
         }
 
