@@ -10,6 +10,10 @@ public class Checkpoint : MonoBehaviour
 
     public MeshRenderer[] mats;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip ActivateSound;
+
     private void Start()
     {
         mats = GetComponentsInChildren<MeshRenderer>();
@@ -53,6 +57,7 @@ public class Checkpoint : MonoBehaviour
     public void SetActiveCheckpoint(bool isActive)
     {
         _active = isActive;
+        audioSource.PlayOneShot(ActivateSound);
         StartCoroutine(AnimateAppearance(_active));
     }
 }

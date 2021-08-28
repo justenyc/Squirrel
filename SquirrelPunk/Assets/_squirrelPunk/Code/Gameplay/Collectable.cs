@@ -19,6 +19,10 @@ public class Collectable : MonoBehaviour
 
     Vector3 direction = Vector3.up;
 
+    [Header("Pickup sound")]
+    public AudioSource audioSource;
+    public AudioClip[] PickupSound;
+
     public delegate void collect();
     public event collect nutCollection;
 
@@ -59,8 +63,14 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //TODO: Should only get playermovement once here
         if (other.GetComponent<playermovement>())
         {
+            foreach (AudioClip clip in PickupSound)
+            {
+                other.GetComponent<playermovement>().audioSource.PlayOneShot(clip);
+            }
+
             if (Game_Manager.instance != null)
                 Game_Manager.instance.CollectionListener(type);
             else

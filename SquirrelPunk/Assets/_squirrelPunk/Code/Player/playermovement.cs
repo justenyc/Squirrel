@@ -49,6 +49,12 @@ public class playermovement : MonoBehaviour
     public bool isSprinting;
     public bool doubleJumpOkay;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip JumpSound;
+    public AudioClip DoubleJumpSound;
+    public AudioClip DeathSound;
+
     PlayerInput playerInput;
 
     public delegate void dying();
@@ -230,6 +236,7 @@ public class playermovement : MonoBehaviour
 
     public void Jump()
     {
+        audioSource.PlayOneShot(JumpSound);
         transform.parent = null;
         SetAnimator(6);
         isGrounded = false;
@@ -248,6 +255,7 @@ public class playermovement : MonoBehaviour
 
     public void DoubleJump()
     {
+        audioSource.PlayOneShot(DoubleJumpSound);
         animator.SetInteger("AnimState", 7);
         jumpBuffer = 0;
         doubleJumpOkay = false;
@@ -310,6 +318,8 @@ public class playermovement : MonoBehaviour
         CharacterController cc = this.GetComponent<CharacterController>();
         cc.enabled = false;
         //TODO play animation, vfx and sfx
+        audioSource.PlayOneShot(DeathSound);
+
         if (Game_Manager.instance != null)
             Game_Manager.instance.Respawn(this);
         cc.enabled = true;
@@ -325,4 +335,5 @@ public class playermovement : MonoBehaviour
             Die();
         }
     }
+
 }
