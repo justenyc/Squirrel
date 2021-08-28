@@ -15,6 +15,10 @@ public class CurrencyDoor : MonoBehaviour
     [SerializeField] float dissolveSpeed;
     [SerializeField] bool dissolve;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip openSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +84,7 @@ public class CurrencyDoor : MonoBehaviour
         {
             if(CheckCurrency())
             {
+                audioSource.PlayOneShot(openSound);
                 StartCoroutine(Dissolve());
             }
         }

@@ -23,6 +23,11 @@ public class TimeTrial : MonoBehaviour
     [Tooltip("The current number of collectables that the player has collected during the time trial. Resets if timer reaches zero")]
     [SerializeField] int _numberCollected;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip PickupSound;
+    public AudioClip VictorySound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +124,7 @@ public class TimeTrial : MonoBehaviour
         _objectsToSpawn.SetActive(false);
         _numberCollected = 0;
         UIManager.instance.SetTimeTrialTextActive(false);
+        Camera.main.GetComponent<BackgroundAudio>().PlayNormalBGM();
 
     }
 
@@ -136,6 +142,7 @@ public class TimeTrial : MonoBehaviour
 
     public void StartTimeTrial()
     {
+        Camera.main.GetComponent<BackgroundAudio>().PlayTimeTrial();
         SpawnObjects(true);
         _startCountdown = true;
         UIManager.instance.SetTimeTrialTextActive(true);
@@ -143,12 +150,14 @@ public class TimeTrial : MonoBehaviour
 
     void TimeTrialVictory()
     {
+        audioSource.PlayOneShot(VictorySound);
         _victoryAcorn.SetActive(true);
         Instantiate(_victoryAcornAppearanceEffect, _victoryAcorn.transform.position, _victoryAcornAppearanceEffect.transform.rotation);
         _victoryAcorn.transform.parent = null;
 
         TrialCollectablesSubscriber(false);
         UIManager.instance.SetTimeTrialTextActive(false);
+        Camera.main.GetComponent<BackgroundAudio>().PlayNormalBGM();
         Destroy(this.gameObject);
     }
 
