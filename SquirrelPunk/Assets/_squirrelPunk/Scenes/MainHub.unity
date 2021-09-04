@@ -21681,6 +21681,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2242383290535120549, guid: 8af198f6b792d2f47ab45fd3b0b2bc85, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.54
+      objectReference: {fileID: 0}
     - target: {fileID: 2242383290980033168, guid: 8af198f6b792d2f47ab45fd3b0b2bc85, type: 3}
       propertyPath: m_Name
       value: TimeTrial
@@ -39098,7 +39102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3865594779357443403, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -33
+      value: -34.03
       objectReference: {fileID: 0}
     - target: {fileID: 3865594779357443403, guid: cd691f99b52cbc64a950b4a050023197, type: 3}
       propertyPath: m_LocalPosition.z
