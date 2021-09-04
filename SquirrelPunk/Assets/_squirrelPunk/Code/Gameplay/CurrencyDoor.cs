@@ -15,6 +15,8 @@ public class CurrencyDoor : MonoBehaviour
     [SerializeField] float dissolveSpeed;
     [SerializeField] bool dissolve;
 
+    private bool dissolving = false;
+
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip openSound;
@@ -65,6 +67,8 @@ public class CurrencyDoor : MonoBehaviour
                 yield return new WaitForSeconds(Time.deltaTime);
             }
         }
+
+        dissolving = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,7 +86,7 @@ public class CurrencyDoor : MonoBehaviour
         }
         else
         {
-            if(CheckCurrency())
+            if(CheckCurrency() && !dissolving)
             {
                 audioSource.PlayOneShot(openSound);
                 StartCoroutine(Dissolve());
