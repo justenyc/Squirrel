@@ -306,7 +306,7 @@ MonoBehaviour:
   beam: {fileID: 2946812114593605006}
   mats: []
   audioSource: {fileID: -1152589148753633522}
-  PickupSound: {fileID: 8300000, guid: 285f3b18d320da84b9222c9b5ce1dc08, type: 3}
+  ActivateSound: {fileID: 8300000, guid: 39d20dfa615c1704d9daade266c5e6e5, type: 3}
 --- !u!82 &-1152589148753633522
 AudioSource:
   m_ObjectHideFlags: 0
