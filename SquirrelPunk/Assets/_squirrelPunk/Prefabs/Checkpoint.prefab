@@ -307,7 +307,7 @@ MonoBehaviour:
   beam: {fileID: 2946812114593605006}
   mats: []
   audioSource: {fileID: -1152589148753633522}
-  ActivateSound: {fileID: 0}
+  ActivateSound: {fileID: 8300000, guid: 7eb58ff0266eca64bbb50a4995f4d0a7, type: 3}
 --- !u!82 &-1152589148753633522
 AudioSource:
   m_ObjectHideFlags: 0
@@ -320,7 +320,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
