@@ -56,8 +56,12 @@ public class Checkpoint : MonoBehaviour
 
     public void SetActiveCheckpoint(bool isActive)
     {
+        //Only play sound when switching from inactive to active
+        if (!_active && isActive)
+            audioSource.PlayOneShot(ActivateSound);
+
         _active = isActive;
-        audioSource.PlayOneShot(ActivateSound);
+
         StartCoroutine(AnimateAppearance(_active));
     }
 }

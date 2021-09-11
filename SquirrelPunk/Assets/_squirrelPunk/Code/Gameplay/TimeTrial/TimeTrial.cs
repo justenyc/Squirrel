@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class TimeTrial : MonoBehaviour
 {
-    //Starting from Clock script. Also sets listener
-    //references UIManager script 
+    //Starting from Clock script.
+    //calls methods in: UIManager, Game_Manager
+    //Subscribes to: playermovement.died, Collectable.nutCollection
 
     [Header("Setup Objects")]
     [SerializeField] GameObject _clock;
     [SerializeField] GameObject _objectsToSpawn;
     [SerializeField] GameObject _victoryAcorn;
     [SerializeField] GameObject _victoryAcornAppearanceEffect;
-    Transform[] _objects;
+    Collectable[] _objects;
 
     [Header("Trial")]
     [SerializeField] bool _startCountdown;
@@ -34,6 +35,8 @@ public class TimeTrial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _countdown = _allotedTime;
+
         playermovement p = FindObjectOfType<playermovement>();
         p.died += PlayerDeathListener;
 
@@ -48,11 +51,11 @@ public class TimeTrial : MonoBehaviour
         }
         else
         {
-            _objects = _objectsToSpawn.GetComponentsInChildren<Transform>();
+            _objects = _objectsToSpawn.GetComponentsInChildren<Collectable>();
 
             if (_objects.Length > 1)
             {
-                _numberToCollect = _objectsToSpawn.GetComponentsInChildren<Transform>().Length - 1;
+                _numberToCollect = _objectsToSpawn.GetComponentsInChildren<Collectable>().Length;
                 _objectsToSpawn.SetActive(false);
                 TrialCollectablesSubscriber(true);
             }
@@ -95,7 +98,7 @@ public class TimeTrial : MonoBehaviour
     {
         if (_objects.Length > 0)
         {
-            foreach(Transform T in _objects)
+            foreach (Collectable T in _objects)
             {
                 Collectable newCollectable = T.GetComponent<Collectable>();
                 if (newCollectable != null)
@@ -113,7 +116,7 @@ public class TimeTrial : MonoBehaviour
     {
         _numberCollected++;
 
-        if(_numberCollected == _numberToCollect)
+        if (_numberCollected == _numberToCollect)
         {
             TimeTrialVictory();
         }
@@ -127,6 +130,7 @@ public class TimeTrial : MonoBehaviour
         _objectsToSpawn.SetActive(false);
         _numberCollected = 0;
         UIManager.instance.SetTimeTrialTextActive(false);
+        Game_Manager.instance.EnableClocks(true);
         Camera.main.GetComponent<BackgroundAudio>().PlayNormalBGM();
         audioSource.PlayOneShot(FailSound);
     }
@@ -136,7 +140,7 @@ public class TimeTrial : MonoBehaviour
         _objectsToSpawn.SetActive(true);
         if (_objects.Length > 0)
         {
-            foreach (Transform t in _objects)
+            foreach (Collectable t in _objects)
             {
                 t.gameObject.SetActive(b);
             }
@@ -151,6 +155,7 @@ public class TimeTrial : MonoBehaviour
         SpawnObjects(true);
         _startCountdown = true;
         UIManager.instance.SetTimeTrialTextActive(true);
+        Game_Manager.instance.EnableClocks(false);
     }
 
     void TimeTrialVictory()
@@ -162,6 +167,7 @@ public class TimeTrial : MonoBehaviour
 
         TrialCollectablesSubscriber(false);
         UIManager.instance.SetTimeTrialTextActive(false);
+        Game_Manager.instance.EnableClocks(true);
         Camera.main.GetComponent<BackgroundAudio>().PlayNormalBGM();
         Destroy(this.gameObject);
     }

@@ -16,7 +16,7 @@ public class Game_Manager : MonoBehaviour
     {
         if (_checkpoints.Length == 0)
             _checkpoints = FindObjectsOfType<Checkpoint>();
-        
+
         if (instance == null)
         {
             instance = this;
@@ -29,7 +29,7 @@ public class Game_Manager : MonoBehaviour
 
     public void CollectionListener(Type type)
     {
-        switch(type)
+        switch (type)
         {
             case Type.Normal:
                 _normalAcorns++;
@@ -49,6 +49,22 @@ public class Game_Manager : MonoBehaviour
                 break;
         }
     }
+
+    public void EnableClocks(bool b)
+    {
+        Clock[] _clocks = FindObjectsOfType<Clock>();
+
+        Debug.Log(_clocks.Length);
+        Debug.Log(b);
+
+        foreach (Clock c in _clocks)
+        {
+            c.gameObject.GetComponent<SphereCollider>().enabled = b;
+            c.gameObject.transform.Find("Clock (1)").gameObject.SetActive(b);
+            Debug.Log(c.name);
+        }
+    }
+
 
     Checkpoint GetActiveCheckpoint()
     {
@@ -72,14 +88,15 @@ public class Game_Manager : MonoBehaviour
             activeCheckpoint = _checkpoints[0];
         }
 
-        player.gameObject.transform.position = activeCheckpoint.gameObject.transform.position + Vector3.forward + Vector3.forward;
+        player.gameObject.transform.position = activeCheckpoint.gameObject.transform.position + Vector3.up * 10;
     }
 
     public void SetActiveCheckpoint(Checkpoint newActiveCheckpoint)
     {
-        foreach(Checkpoint cp in _checkpoints)
+        foreach (Checkpoint cp in _checkpoints)
         {
-            cp.SetActiveCheckpoint(false);
+            if (cp != newActiveCheckpoint)
+                cp.SetActiveCheckpoint(false);
         }
 
         newActiveCheckpoint.SetActiveCheckpoint(true);

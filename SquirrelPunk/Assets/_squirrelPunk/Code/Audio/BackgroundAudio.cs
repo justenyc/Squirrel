@@ -36,8 +36,8 @@ public class BackgroundAudio : MonoBehaviour
             NextPlay = Random.Range(PlayTimeInterval - PlayTimeVariation, PlayTimeInterval + PlayTimeVariation);
             TimeCount = 0.0f;
             CurrentMusic = 0; //Random.next(music.Length);
-            audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
-            audioSource.Play();
+            //audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+            //audioSource.Play();
         }
 
         TimeCount += Time.deltaTime;

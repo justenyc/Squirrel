@@ -35,7 +35,10 @@ public class Clock : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _timeTrail.StartTimeTrial();
-        EnableInteractions(false);
+        if (other.TryGetComponent(out playermovement p))
+        {
+            _timeTrail.StartTimeTrial();
+            EnableInteractions(false);
+        }
     }
 }
