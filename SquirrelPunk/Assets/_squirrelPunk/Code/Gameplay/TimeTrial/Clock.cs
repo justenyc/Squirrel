@@ -6,10 +6,12 @@ public class Clock : MonoBehaviour
 {
     [SerializeField] float _rotationSpeed = 0;
     TimeTrial _timeTrail;
+    GameObject child;
     // Start is called before the first frame update
     void Start()
     {
         _timeTrail = transform.parent.GetComponent<TimeTrial>();
+        child = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class Clock : MonoBehaviour
     {
         this.GetComponent<MeshRenderer>().enabled = b;
         this.GetComponent<SphereCollider>().enabled = b;
+        child.SetActive(b);
     }
 
     void Rotate()

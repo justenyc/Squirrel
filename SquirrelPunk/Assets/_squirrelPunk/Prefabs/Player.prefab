@@ -122,11 +122,8 @@ MonoBehaviour:
   isSprinting: 0
   doubleJumpOkay: 0
   audioSource: {fileID: 5774484127589126784}
-  JumpSound: {fileID: 8300000, guid: b64249831ed61624a81d480188777768, type: 3}
+  JumpSound: {fileID: 8300000, guid: 5bf0cf37835693a41b981d0c77461bf7, type: 3}
   DoubleJumpSound: {fileID: 8300000, guid: 9d2d940b0f4d36f4ea1741d5ecdc1757, type: 3}
-  NormalLegSound: {fileID: 8300000, guid: 3cb4647676a614c479d43c17e42d3c7e, type: 3}
-  MetallicLegSound: {fileID: 8300000, guid: 3cb4647676a614c479d43c17e42d3c7e, type: 3}
-  WallRunSound: {fileID: 8300000, guid: 3cb4647676a614c479d43c17e42d3c7e, type: 3}
   DeathSound: {fileID: 8300000, guid: 3cb4647676a614c479d43c17e42d3c7e, type: 3}
 --- !u!114 &8447740222005356768
 MonoBehaviour:

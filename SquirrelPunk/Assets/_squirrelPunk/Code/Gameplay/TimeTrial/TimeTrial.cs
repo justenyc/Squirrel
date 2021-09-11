@@ -25,7 +25,10 @@ public class TimeTrial : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource audioSource;
-    public AudioClip PickupSound;
+    public AudioSource extraAudioSource;
+    public AudioClip StartSound;
+    public AudioClip ClockSound;
+    public AudioClip FailSound;
     public AudioClip VictorySound;
 
     // Start is called before the first frame update
@@ -125,7 +128,7 @@ public class TimeTrial : MonoBehaviour
         _numberCollected = 0;
         UIManager.instance.SetTimeTrialTextActive(false);
         Camera.main.GetComponent<BackgroundAudio>().PlayNormalBGM();
-
+        audioSource.PlayOneShot(FailSound);
     }
 
     void SpawnObjects(bool b)
@@ -142,6 +145,8 @@ public class TimeTrial : MonoBehaviour
 
     public void StartTimeTrial()
     {
+        audioSource.PlayOneShot(StartSound);
+        extraAudioSource.PlayOneShot(ClockSound);
         Camera.main.GetComponent<BackgroundAudio>().PlayTimeTrial();
         SpawnObjects(true);
         _startCountdown = true;
