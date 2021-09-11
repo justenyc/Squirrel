@@ -123,7 +123,7 @@ public class playermovement : MonoBehaviour
             {
                 Collider[] cols = Physics.OverlapSphere(transform.position, 1.5f, 9);
 
-                if (cols.Length > 0 && wallJumpCD < 0)
+                if (cols.Length > 0 && wallJumpCD <= 0)
                 {
                     gravity = 0;
                     velocity = Vector3.zero;
@@ -142,7 +142,7 @@ public class playermovement : MonoBehaviour
             }
         }
 
-        //What the actual fuck, Branden?! 0_o
+        //What the actual fuck, Branden? 0_o
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -313,10 +313,12 @@ public class playermovement : MonoBehaviour
         return false;
     }
 
+    //subscribers: TimeTrial.cs
     public void Die()
     {
         CharacterController cc = this.GetComponent<CharacterController>();
         cc.enabled = false;
+
         //TODO play animation, vfx and sfx
         audioSource.PlayOneShot(DeathSound);
 

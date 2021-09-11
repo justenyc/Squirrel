@@ -72,14 +72,13 @@ public class Game_Manager : MonoBehaviour
             activeCheckpoint = _checkpoints[0];
         }
 
-        player.gameObject.transform.position = activeCheckpoint.gameObject.transform.position + Vector3.forward;
+        player.gameObject.transform.position = activeCheckpoint.gameObject.transform.position + Vector3.forward + Vector3.forward;
     }
 
     public void SetActiveCheckpoint(Checkpoint newActiveCheckpoint)
     {
         foreach(Checkpoint cp in _checkpoints)
         {
-            Debug.Log(cp.name);
             cp.SetActiveCheckpoint(false);
         }
 
