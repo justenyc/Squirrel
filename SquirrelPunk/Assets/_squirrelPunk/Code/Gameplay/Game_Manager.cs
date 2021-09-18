@@ -6,6 +6,7 @@ public class Game_Manager : MonoBehaviour
 {
     public static Game_Manager instance;
     public Checkpoint[] _checkpoints;
+    public Cinemachine.CinemachineFreeLook vCam;
 
     [Header("Collectables")]
     public int _goldAcorns = 0;
@@ -54,14 +55,9 @@ public class Game_Manager : MonoBehaviour
     {
         Clock[] _clocks = FindObjectsOfType<Clock>();
 
-        Debug.Log(_clocks.Length);
-        Debug.Log(b);
-
         foreach (Clock c in _clocks)
         {
-            c.gameObject.GetComponent<SphereCollider>().enabled = b;
-            c.gameObject.transform.Find("Clock (1)").gameObject.SetActive(b);
-            Debug.Log(c.name);
+            c.EnableInteractions(b);
         }
     }
 
@@ -100,5 +96,17 @@ public class Game_Manager : MonoBehaviour
         }
 
         newActiveCheckpoint.SetActiveCheckpoint(true);
+    }
+
+    public void LookAtTargetTemp(Transform target)
+    {
+        StartCoroutine(LookAtTargetTemporarily(target));
+    }
+
+    IEnumerator LookAtTargetTemporarily(Transform target)
+    {
+        vCam.LookAt = target;
+        yield return new WaitForSecondsRealtime(3f);
+        vCam.LookAt = FindObjectOfType<playermovement>().gameObject.transform;
     }
 }

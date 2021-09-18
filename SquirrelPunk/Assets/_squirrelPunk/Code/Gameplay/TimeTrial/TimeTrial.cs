@@ -168,6 +168,7 @@ public class TimeTrial : MonoBehaviour
         TrialCollectablesSubscriber(false);
         UIManager.instance.SetTimeTrialTextActive(false);
         Game_Manager.instance.EnableClocks(true);
+        Game_Manager.instance.LookAtTargetTemp(_victoryAcorn.transform);
         Camera.main.GetComponent<BackgroundAudio>().PlayNormalBGM();
         Destroy(this.gameObject);
     }
