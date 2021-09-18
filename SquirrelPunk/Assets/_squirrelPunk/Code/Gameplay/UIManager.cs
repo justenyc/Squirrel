@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    [SerializeField] TextMeshProUGUI dialogueBox;
     [SerializeField] TextMeshProUGUI[] tmpArray;
     Dictionary<string, TextMeshProUGUI> d = new Dictionary<string, TextMeshProUGUI>();
 
@@ -24,6 +25,8 @@ public class UIManager : MonoBehaviour
         {
             d.Add(tmp.name, tmp);
         }
+
+        ClearDialogue();
     }
 
     public void SetTimeTrialTextActive(bool b)
@@ -35,4 +38,18 @@ public class UIManager : MonoBehaviour
     {
         d[textName].text = value.ToString();
     }
+
+    public void InstantDialogue(string dialogue)
+    {
+        dialogueBox.gameObject.transform.parent.gameObject.SetActive(true);
+        dialogueBox.text = dialogue;
+    }
+
+    public void ClearDialogue()
+    {
+        dialogueBox.text = string.Empty;
+        dialogueBox.gameObject.transform.parent.gameObject.SetActive(false);
+    }
+
+
 }
