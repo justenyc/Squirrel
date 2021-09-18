@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SignPost : MonoBehaviour
 {
-
+    [TextArea]
     public string SignText;
 
     // Start is called before the first frame update
