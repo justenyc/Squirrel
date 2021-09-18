@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     [Header("Setup")]
+    [SerializeField] string _name;
     [SerializeField] Type type;
     [SerializeField] GameObject _collectionEffect;
 
