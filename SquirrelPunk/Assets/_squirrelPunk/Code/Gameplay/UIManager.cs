@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,7 +11,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI dialogueBox;
     [SerializeField] TextMeshProUGUI[] tmpArray;
+    [SerializeField] GameObject pauseMenu;
     Dictionary<string, TextMeshProUGUI> d = new Dictionary<string, TextMeshProUGUI>();
+
+    PlayerInput playerInput;
+
+    bool paused;
 
 
     // Start is called before the first frame update
@@ -27,6 +33,17 @@ public class UIManager : MonoBehaviour
         }
 
         ClearDialogue();
+
+        
+    }
+
+    private void Update()
+    {
+        Gamepad gp = InputSystem.GetDevice<Gamepad>();
+        if (gp.startButton.wasPressedThisFrame)
+        {
+            OnPause();
+        }
     }
 
     public void SetTimeTrialTextActive(bool b)
@@ -51,5 +68,20 @@ public class UIManager : MonoBehaviour
         dialogueBox.gameObject.transform.parent.gameObject.SetActive(false);
     }
 
+    public void OnPause()
+    {
+        paused = !paused;
+        FindObjectOfType<playermovement>().enabled = !paused;
+        if (paused)
+        {
+            pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            pauseMenu.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
 
 }
