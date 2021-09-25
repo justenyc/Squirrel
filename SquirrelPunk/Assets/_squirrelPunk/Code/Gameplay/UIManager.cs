@@ -12,6 +12,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueBox;
     [SerializeField] TextMeshProUGUI[] tmpArray;
     [SerializeField] GameObject pauseMenu;
+
+    [SerializeField] TextMeshProUGUI totalNut;
+    [SerializeField] TextMeshProUGUI goldNut;
+
+
     Dictionary<string, TextMeshProUGUI> d = new Dictionary<string, TextMeshProUGUI>();
 
     PlayerInput playerInput;
@@ -44,6 +49,9 @@ public class UIManager : MonoBehaviour
         {
             OnPause();
         }
+
+        totalNut.text = Game_Manager.instance._normalAcorns.ToString();
+        goldNut.text = Game_Manager.instance._goldAcorns.ToString();
     }
 
     public void SetTimeTrialTextActive(bool b)

@@ -7,6 +7,7 @@ public class Collectable : MonoBehaviour
     [Header("Setup")]
     [SerializeField] string _name;
     [SerializeField] Type type;
+    [SerializeField] Area area;
     [SerializeField] GameObject _collectionEffect;
 
     [Header("Animation Parameters")]
@@ -55,6 +56,15 @@ public class Collectable : MonoBehaviour
             }
         }
     }
+    public Type GetTypeEnum()
+    {
+        return type;
+    }
+
+    public Area GetAreaEnum()
+    {
+        return area;
+    }
 
     void Spin()
     {
@@ -73,7 +83,7 @@ public class Collectable : MonoBehaviour
             }
 
             if (Game_Manager.instance != null)
-                Game_Manager.instance.CollectionListener(type);
+                Game_Manager.instance.CollectionListener(this);
             else
                 Debug.LogError("Game Manager not found!");
 
@@ -97,3 +107,12 @@ public enum Type
     Gold,
     Time
 };
+
+public enum Area
+{
+    one,
+    two,
+    three,
+    four
+};
+

@@ -12,9 +12,14 @@ public class Game_Manager : MonoBehaviour
     public int _goldAcorns = 0;
     public int _normalAcorns = 0;
 
+    public CapitalArea[] areaArray = new CapitalArea[4]; 
+
+
     // Start is called before the first frame update
     void Start()
     {
+        InitializeAreaArray();
+
         if (_checkpoints.Length == 0)
             _checkpoints = FindObjectsOfType<Checkpoint>();
 
@@ -26,20 +31,51 @@ public class Game_Manager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+       
     }
 
-    public void CollectionListener(Type type)
+    void InitializeAreaArray()
     {
+        for (int i = 0; i < areaArray.Length; i++)
+        {
+            areaArray[i] = new CapitalArea();
+            switch (i)
+            {
+                case 0:
+                    areaArray[i]._name = "Stronghold";
+                    break;
+                case 1:
+                    areaArray[i]._name = "Dock";
+                    break;
+                case 2:
+                    areaArray[i]._name = "Island";
+                    break;
+                case 3:
+                    areaArray[i]._name = "Courtyard";
+                    break;
+            }
+
+        }
+    }
+
+    public void CollectionListener(Collectable c)
+    {
+        Type type = c.GetTypeEnum();
         switch (type)
         {
             case Type.Normal:
                 _normalAcorns++;
+                areaArray[(int)c.GetAreaEnum()]._normal++;
+                
                 UIManager.instance.UpdateText("Nut_Display_Text", _normalAcorns);
+                UIManager.instance.UpdateText(areaArray[(int)c.GetAreaEnum()]._name + " Nut Value", areaArray[(int)c.GetAreaEnum()]._normal);
                 break;
 
             case Type.Gold:
                 _goldAcorns++;
+                areaArray[(int)c.GetAreaEnum()]._gold++;
                 UIManager.instance.UpdateText("Gold_Nut_Display_Text", _goldAcorns);
+                UIManager.instance.UpdateText(areaArray[(int)c.GetAreaEnum()]._name + " Gold Acorn Value", areaArray[(int)c.GetAreaEnum()]._gold);
                 break;
 
             case Type.Time:
@@ -109,4 +145,13 @@ public class Game_Manager : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
         vCam.LookAt = FindObjectOfType<playermovement>().gameObject.transform;
     }
+
+}
+
+[System.Serializable]
+public struct CapitalArea
+{
+    public int _normal;
+    public int _gold;
+    public string _name;
 }
