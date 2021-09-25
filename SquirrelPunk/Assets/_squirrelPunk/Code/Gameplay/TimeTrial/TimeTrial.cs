@@ -170,6 +170,9 @@ public class TimeTrial : MonoBehaviour
         Game_Manager.instance.EnableClocks(true);
         Game_Manager.instance.LookAtTargetTemp(_victoryAcorn.transform);
         Camera.main.GetComponent<BackgroundAudio>().PlayNormalBGM();
+
+        playermovement p = FindObjectOfType<playermovement>();
+        p.died -= PlayerDeathListener;
         Destroy(this.gameObject);
     }
 
