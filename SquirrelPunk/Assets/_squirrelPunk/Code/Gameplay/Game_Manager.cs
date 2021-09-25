@@ -106,7 +106,7 @@ public class Game_Manager : MonoBehaviour
     IEnumerator LookAtTargetTemporarily(Transform target)
     {
         vCam.LookAt = target;
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(2f);
         vCam.LookAt = FindObjectOfType<playermovement>().gameObject.transform;
     }
 }
