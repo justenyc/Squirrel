@@ -71,6 +71,9 @@ public class playermovement : MonoBehaviour
     }
     void Update()
     {
+        if (transform.parent == null)
+            transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
         jumpBuffer -= Time.deltaTime;
             Mathf.Clamp(jumpBuffer, 0, jumpBufferTimer);
         groundBuffer -= Time.deltaTime;
@@ -337,5 +340,8 @@ public class playermovement : MonoBehaviour
             Die();
         }
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("hello");
+    }
 }
