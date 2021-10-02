@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_squirrelPunk/Scenes/MainMenu.unity
+    guid: b324588a2976a684cb54843d4c5b62ed
+  - enabled: 1
+    path: Assets/_squirrelPunk/Scenes/Tutorial Area.unity
+    guid: 62a692551b0b76d4c91ff9dfae4dd43f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6c2fac0e1b824a44c9dac21633241b6e, type: 2}
