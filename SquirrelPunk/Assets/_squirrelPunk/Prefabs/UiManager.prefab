@@ -932,7 +932,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab69ad4e4a1c1a4cbf7efbaaf685ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 0}
   tmpArray:
   - {fileID: 734330576}
   - {fileID: 189938870}
   - {fileID: 1314298737}
+  pauseMenu: {fileID: 0}
+  totalNut: {fileID: 0}
+  goldNut: {fileID: 0}
+  fadeAnimator: {fileID: 0}

@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
 
     bool paused;
 
+    [SerializeField] Animator fadeAnimator;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -90,6 +92,16 @@ public class UIManager : MonoBehaviour
             pauseMenu.gameObject.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+
+    public void StartFade()
+    {
+        fadeAnimator.SetTrigger("FadeStart");
+    }
+
+    public void EndFade()
+    {
+        fadeAnimator.SetTrigger("FadeEnd");
     }
 
 }
