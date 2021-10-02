@@ -121,6 +121,11 @@ public class playermovement : MonoBehaviour
         else
         {
             groundDistance = 0.25f;
+            if (doubleJumpOkay == false)
+                SetAnimator(7);
+            else
+                SetAnimator(6);
+
             //Wallrunning handler
             if (wallRunToggle == true)
             {
@@ -258,7 +263,7 @@ public class playermovement : MonoBehaviour
     public void DoubleJump()
     {
         audioSource.PlayOneShot(DoubleJumpSound);
-        animator.SetInteger("AnimState", 7);
+        SetAnimator(7);
         jumpBuffer = 0;
         doubleJumpOkay = false;
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
@@ -266,7 +271,7 @@ public class playermovement : MonoBehaviour
 
     public void WallJump()
     {
-        animator.SetInteger("AnimState", 6);
+        SetAnimator(6);
         jumpBuffer = 0;
         wallJumpCD = wallJumpCDTimer;
         velocity.x = lastAngleHit.x * wallKickForce;
@@ -318,15 +323,14 @@ public class playermovement : MonoBehaviour
     //subscribers: TimeTrial.cs
     public void Die()
     {
+        Debug.Log("Die() called");
         CharacterController cc = this.GetComponent<CharacterController>();
         cc.enabled = false;
 
-        //TODO play animation, vfx and sfx
         audioSource.PlayOneShot(DeathSound);
 
         if (Game_Manager.instance != null)
             Game_Manager.instance.Respawn(this);
-        cc.enabled = true;
 
         if (died != null)
             died();

@@ -178,6 +178,10 @@ public class TimeTrial : MonoBehaviour
 
     void PlayerDeathListener()
     {
-        Reset();
+        if (_startCountdown)
+        {
+            Debug.Log("Time Trial heard death while countdown was active");
+            Reset();
+        }
     }
 }

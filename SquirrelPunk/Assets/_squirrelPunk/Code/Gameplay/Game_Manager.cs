@@ -7,6 +7,7 @@ public class Game_Manager : MonoBehaviour
     public static Game_Manager instance;
     public Checkpoint[] _checkpoints;
     public Cinemachine.CinemachineFreeLook vCam;
+    public float respawnDelayTime = 0.1f;
 
     [Header("Collectables")]
     public int _goldAcorns = 0;
@@ -120,7 +121,17 @@ public class Game_Manager : MonoBehaviour
             activeCheckpoint = _checkpoints[0];
         }
 
+        StartCoroutine(DelayPlayerMovementonRespawn(respawnDelayTime, player, activeCheckpoint));
+    }
+
+    IEnumerator DelayPlayerMovementonRespawn(float delayTime, playermovement player, Checkpoint activeCheckpoint)
+    {
+        UIManager.instance.EndFade();
+
+        yield return new WaitForSeconds(delayTime);
+        
         player.gameObject.transform.position = activeCheckpoint.gameObject.transform.position + Vector3.up * 10;
+        player.GetComponent<CharacterController>().enabled = true;
     }
 
     public void SetActiveCheckpoint(Checkpoint newActiveCheckpoint)
