@@ -7,9 +7,18 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/_squirrelPunk/Scenes/MainMenu.unity
-    guid: b324588a2976a684cb54843d4c5b62ed
+    guid: 0b15f9cec678e794d85013d807e3e3d3
   - enabled: 1
     path: Assets/_squirrelPunk/Scenes/Tutorial Area.unity
     guid: 62a692551b0b76d4c91ff9dfae4dd43f
+  - enabled: 1
+    path: Assets/_squirrelPunk/Scenes/MainHub.unity
+    guid: 7465b011b8eaedb4c9b7755626d6fa65
+  - enabled: 1
+    path: Assets/_squirrelPunk/Scenes/Area 2.unity
+    guid: 7b51d11ea19c0944e9e684c3afe5b8fa
+  - enabled: 1
+    path: Assets/_squirrelPunk/Scenes/Area 3.unity
+    guid: ef266d9492ce8e949acc9b4944c64ce1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6c2fac0e1b824a44c9dac21633241b6e, type: 2}

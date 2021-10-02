@@ -97,6 +97,7 @@ public class UIManager : MonoBehaviour
     public void StartFade()
     {
         fadeAnimator.Play("fade_start", -1, 0f);
+        Invoke("EndFade", 1f);
     }
 
     public void EndFade()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -20,9 +21,12 @@ public class Game_Manager : MonoBehaviour
     void Start()
     {
         InitializeAreaArray();
+        SceneManager.sceneLoaded += onSceneLoaded;
+        SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
 
-        if (_checkpoints.Length == 0)
-            _checkpoints = FindObjectsOfType<Checkpoint>();
+       
 
         if (instance == null)
         {
@@ -33,6 +37,14 @@ public class Game_Manager : MonoBehaviour
             Destroy(this.gameObject);
         }
        
+    }
+
+    void onSceneLoaded(Scene s, LoadSceneMode l)
+    {
+        
+        _checkpoints = FindObjectsOfType<Checkpoint>();
+
+        Debug.Log(s.name);
     }
 
     void InitializeAreaArray()
@@ -126,7 +138,7 @@ public class Game_Manager : MonoBehaviour
 
     IEnumerator DelayPlayerMovementonRespawn(float delayTime, playermovement player, Checkpoint activeCheckpoint)
     {
-        UIManager.instance.EndFade();
+        UIManager.instance.StartFade();
 
         yield return new WaitForSeconds(delayTime);
         
