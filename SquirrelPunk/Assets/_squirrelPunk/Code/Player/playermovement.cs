@@ -145,7 +145,6 @@ public class playermovement : MonoBehaviour
             }
         }
 
-        //What the actual fuck, Branden? 0_o
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
