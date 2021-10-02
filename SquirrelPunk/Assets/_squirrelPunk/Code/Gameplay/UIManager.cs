@@ -96,12 +96,12 @@ public class UIManager : MonoBehaviour
 
     public void StartFade()
     {
-        fadeAnimator.SetTrigger("FadeStart");
+        fadeAnimator.Play("fade_start", -1, 0f);
     }
 
     public void EndFade()
     {
-        fadeAnimator.SetTrigger("FadeEnd");
+        fadeAnimator.Play("fade_end", -1, 0f);
     }
 
 }
