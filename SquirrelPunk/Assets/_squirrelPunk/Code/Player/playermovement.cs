@@ -329,6 +329,13 @@ public class playermovement : MonoBehaviour
 
         audioSource.PlayOneShot(DeathSound);
 
+        //Unparent from anything before dying.
+        //Not doing this causes bugs with parenting to moving platforms.
+        if (transform.parent != null)
+        {
+            transform.parent = null;
+        }
+
         if (Game_Manager.instance != null)
             Game_Manager.instance.Respawn(this);
 
