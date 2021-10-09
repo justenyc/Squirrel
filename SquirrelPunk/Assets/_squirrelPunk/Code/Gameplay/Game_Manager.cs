@@ -160,6 +160,11 @@ public class Game_Manager : MonoBehaviour
     public void LookAtTargetTemp(Transform target)
     {
         StartCoroutine(LookAtTargetTemporarily(target));
+
+        var player = FindObjectOfType<playermovement>();
+        var playerAnimator = player.GetComponentInChildren<Animator>();
+        player.enabled = false;
+        playerAnimator.speed = 0;
     }
 
     IEnumerator LookAtTargetTemporarily(Transform target)
@@ -167,6 +172,11 @@ public class Game_Manager : MonoBehaviour
         vCam.LookAt = target;
         yield return new WaitForSecondsRealtime(2f);
         vCam.LookAt = FindObjectOfType<playermovement>().gameObject.transform;
+
+        var player = FindObjectOfType<playermovement>();
+        var playerAnimator = player.GetComponentInChildren<Animator>();
+        player.enabled = true;
+        playerAnimator.speed = 1;
     }
 
 }
