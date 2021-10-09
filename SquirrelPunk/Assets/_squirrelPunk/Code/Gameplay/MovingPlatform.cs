@@ -79,7 +79,7 @@ public class MovingPlatform : MonoBehaviour
 
     IEnumerator DelayPlatform(float delay, bool direction)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
         move = true;
     }
 

@@ -3789,7 +3789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264832074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 560, y: -35, z: -277}
+  m_LocalPosition: {x: 560, y: -36.5, z: -277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 706938356}
@@ -23407,7 +23407,7 @@ GameObject:
   - component: {fileID: 1324618607}
   m_Layer: 0
   m_Name: Hazard
-  m_TagString: Untagged
+  m_TagString: deathZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35485,7 +35485,7 @@ MonoBehaviour:
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_MinimumDistanceFromTarget: 0.1
+  m_MinimumDistanceFromTarget: 6
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
