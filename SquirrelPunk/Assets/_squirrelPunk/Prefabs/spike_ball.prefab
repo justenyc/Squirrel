@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3373357273215725931}
   - component: {fileID: 663267027150964129}
   - component: {fileID: 2230953593084746027}
+  - component: {fileID: -3131084104586968259}
   m_Layer: 0
   m_Name: spike_ball
   m_TagString: deathZone
@@ -95,3 +96,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.013
   m_Center: {x: 0, y: 0, z: 9.313224e-10}
+--- !u!114 &-3131084104586968259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311842342302360692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84b2d76311acfe4e98a55f06f49b7bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 6367656013941329263, guid: ca8e935601e37224c8b5b1d2ea5b739e, type: 3}
+  mr: {fileID: 0}

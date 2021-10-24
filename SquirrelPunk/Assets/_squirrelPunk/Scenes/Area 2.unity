@@ -43246,7 +43246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2242383290980033174, guid: 8af198f6b792d2f47ab45fd3b0b2bc85, type: 3}
       propertyPath: _allotedTime
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2242383290980033174, guid: 8af198f6b792d2f47ab45fd3b0b2bc85, type: 3}
       propertyPath: _victoryAcorn
