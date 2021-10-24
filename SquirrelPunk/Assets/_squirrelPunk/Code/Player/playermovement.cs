@@ -271,6 +271,7 @@ public class playermovement : MonoBehaviour
 
     public void WallJump()
     {
+        audioSource.PlayOneShot(JumpSound);
         SetAnimator(6);
         jumpBuffer = 0;
         wallJumpCD = wallJumpCDTimer;

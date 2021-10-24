@@ -31,7 +31,7 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (waypoints.Count > 1)
             Movement();

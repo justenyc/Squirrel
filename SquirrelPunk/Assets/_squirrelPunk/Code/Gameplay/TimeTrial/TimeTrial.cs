@@ -124,6 +124,7 @@ public class TimeTrial : MonoBehaviour
 
     private void Reset()
     {
+        FindObjectOfType<playermovement>().transform.parent = null;
         _startCountdown = false;
         _countdown = _allotedTime;
         _clock.GetComponent<Clock>().EnableInteractions(true);

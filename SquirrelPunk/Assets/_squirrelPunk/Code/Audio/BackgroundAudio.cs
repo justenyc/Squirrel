@@ -24,7 +24,7 @@ public class BackgroundAudio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         NextPlay = Random.Range(PlayTimeInterval - PlayTimeVariation, PlayTimeInterval + PlayTimeVariation);
         PlayNormalBGM();
     }
@@ -56,7 +56,8 @@ public class BackgroundAudio : MonoBehaviour
         BackgroundMusicSource.Stop();
         BackgroundMusicSource.loop = true;
         BackgroundMusicSource.pitch = 1.0f;
-        BackgroundMusicSource.PlayOneShot(BackgroundMusic);
+        audioSource.clip = BackgroundMusic;
+        BackgroundMusicSource.Play();
     }
 }
 
