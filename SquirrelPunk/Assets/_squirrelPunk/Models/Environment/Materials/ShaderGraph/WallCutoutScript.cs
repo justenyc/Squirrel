@@ -8,6 +8,7 @@ public class WallCutoutScript : MonoBehaviour
     public static int SizeID = Shader.PropertyToID("_size");
 
     public Material WallMaterial;
+    Material instanceMaterial;
     public Camera Camera;
     public LayerMask Mask;
 
@@ -21,13 +22,16 @@ public class WallCutoutScript : MonoBehaviour
         {
             if (hit.collider.tag == "wall")
             {
-                WallMaterial = hit.collider.gameObject.GetComponent<MeshRenderer>().material;
-                WallMaterial.SetFloat(SizeID, 1);
+                if (instanceMaterial != null)
+                    instanceMaterial.SetFloat(SizeID, 0);
+
+                instanceMaterial = hit.collider.gameObject.GetComponent<MeshRenderer>().material;
+                instanceMaterial.SetFloat(SizeID, 1);
             }
         }
         else
         {
-            WallMaterial.SetFloat(SizeID, 0);
+            instanceMaterial.SetFloat(SizeID, 0);
         }
 
         Debug.DrawRay(transform.position, dir, Color.magenta);
